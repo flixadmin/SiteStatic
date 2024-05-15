@@ -32,8 +32,13 @@ sc += `</div>
   <h5 class='text-xl font-medium'>Download</h5>
   <button class='rounded filter-btn p-1 text-sm ease-out duration-300 border bg-emerald-200/50 text-emerald-700 border-emerald-200 hover:bg-emerald-600 hover:text-white hover:border-emerald-600 dark:bg-emerald-800/50 dark:text-emerald-400 dark:border-emerald-700/75 dark:hover:bg-emerald-400/75 dark:hover:text-white dark:hover:border-emerald-400/75 leading-none' style='display: none'>Filter</button>
 </div>
-<div id='dl' class='relative overflow-x-auto rounded-md'>
+<div id='dl' class='relative overflow-x-auto rounded-md mb-2'>
   <span class="border-4 rounded-full w-10 h-10 block mx-auto my-6 border-emerald-600/[.5] border-t-emerald-600 dark:border-emerald-400/[.5] dark:border-t-emerald-400 animate-spin"></span>
+</div>
+<div align="center">
+  <button id="dlvlt" class="bg-emerald-600/[.85] text-white w-24 h-10 leading-none rounded-md text-lg ease-out duration-300 active:scale-[.9] hover:bg-emerald-600 dark:bg-emerald-400/75 dark:hover:bg-emerald-500/75">
+    <span>Download Visible Links TXT</span>
+  </button>
 </div>
 `;
 $('.sc').html(sc);
