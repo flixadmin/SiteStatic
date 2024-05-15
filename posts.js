@@ -35,7 +35,7 @@ sc += `</div>
 <div id='dl' class='relative overflow-x-auto rounded-md mb-1'>
   <span class="border-4 rounded-full w-10 h-10 block mx-auto my-6 border-emerald-600/[.5] border-t-emerald-600 dark:border-emerald-400/[.5] dark:border-t-emerald-400 animate-spin"></span>
 </div>
-<div align="center" class=" mt-4">
+<div align="center" class="mt-4">
   <button id="dlvlt" style="display: none" class="bg-emerald-600/[.85] text-white py-2 px-4 opacity-[.9] leading-none rounded-md text-lg ease-out duration-300 active:scale-[.9] hover:bg-emerald-600 dark:bg-emerald-400/75 dark:hover:bg-emerald-500/75">
     <span>Download Visible Links TXT</span>
   </button>
