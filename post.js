@@ -187,7 +187,7 @@ function on_dlvlt_click () {
   }
   function getLinksDL () {
     let lotf = '';
-    $('#dl .ta a:first-child:visible').each(function(){lotf+=$(this).attr('href')+'\n'});
+    $('#dl .ta a:first-child:visible').each(function(){lotf+=$(this).attr('href')+'\r\n'});
     return lotf.trim();
   }
   const filename = `${window.mtitle} ${window.mrelease_date.split(',')[1].trim()} ${Date().normalize()}.txt`;
