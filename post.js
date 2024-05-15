@@ -32,11 +32,11 @@ sc += `</div>
   <h5 class='text-xl font-medium'>Download</h5>
   <button class='rounded filter-btn p-1 text-sm ease-out duration-300 border bg-emerald-200/50 text-emerald-700 border-emerald-200 hover:bg-emerald-600 hover:text-white hover:border-emerald-600 dark:bg-emerald-800/50 dark:text-emerald-400 dark:border-emerald-700/75 dark:hover:bg-emerald-400/75 dark:hover:text-white dark:hover:border-emerald-400/75 leading-none' style='display: none'>Filter</button>
 </div>
-<div id='dl' class='relative overflow-x-auto rounded-md mb-2'>
+<div id='dl' class='relative overflow-x-auto rounded-md mb-1'>
   <span class="border-4 rounded-full w-10 h-10 block mx-auto my-6 border-emerald-600/[.5] border-t-emerald-600 dark:border-emerald-400/[.5] dark:border-t-emerald-400 animate-spin"></span>
 </div>
-<div align="center">
-  <button id="dlvlt" class="bg-emerald-600/[.85] text-white w-24 h-10 leading-none rounded-md text-lg ease-out duration-300 active:scale-[.9] hover:bg-emerald-600 dark:bg-emerald-400/75 dark:hover:bg-emerald-500/75">
+<div align="center" class=" mt-4">
+  <button id="dlvlt" style="display: none" class="bg-emerald-600/[.85] text-white py-2 px-4 opacity-[.9] leading-none rounded-md text-lg ease-out duration-300 active:scale-[.9] hover:bg-emerald-600 dark:bg-emerald-400/75 dark:hover:bg-emerald-500/75">
     <span>Download Visible Links TXT</span>
   </button>
 </div>
@@ -44,6 +44,7 @@ sc += `</div>
 $('.sc').html(sc);
 $('.sc .media .to-load').replaceTag('img');$('.sc .media .to-load').on('load', function(){$(this).removeClass('to-load animate-pulse dark:bg-slate-600 bg-slate-400').addClass('loaded')});
 window.dispatchEvent(new Event('resize'));
+$('#dlvlt').on('click', on_dlvlt_click);
 load_streams();
 $('body').append(`<div id="modal" class="fixed w-full h-full top-0 left-0 z-40 backdrop-blur-sm backdrop-brightness-75 text-slate-700 dark:text-slate-100 flex items-center justify-center ease duration-300 opacity-0 invisible" tabindex="-1">
   <div class="card bg-slate-200 dark:bg-slate-600 max-w-96 w-full rounded-md m-4 shadow-md border border-slate-300 dark:border-slate-500 p-4" style="max-height: calc(100% - 2rem); overflow: auto;">
@@ -147,7 +148,7 @@ async function load_streams() {
       });
       table.append(tbody);
 	  if (!r.locked) {onlinkUnlock()}
-      dl.html('').append(table).addClass('shadow-md border dark:border-slate-600');
+      dl.html('').append(table).addClass('shadow border dark:border-slate-600');
       window.dispatchEvent(new Event('resize'));
     },
     error: function (e, s) {
@@ -170,4 +171,26 @@ function onlinkUnlock () {
     <i class="bi bi-check text-5xl"></i> <p>Tips: Using <a class="LINKCLS" target="_blank" href="https://www.freedownloadmanager.org/download.htm">FDM</a> on PC or <a class="LINKCLS" target="_blank" href="https://play.google.com/store/apps/details?id=idm.internet.download.manager&hl=en&gl=US&pli=1">1DM</a> on Android may result in better download speed!
   </p></div>`.replaceAll('LINKCLS', 'font-medium text-emerald-800 dark:text-emerald-100 hover:underline hover:text-emerald-900 dark:hover:text-emerald-50 ease-out duration-300');
   $('#alert').html(c);
+  $('#dlvlt').show();
+}
+function on_dlvlt_click () {
+  function downloadFile(filename, content) {
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+  function getLinksDL () {
+    let lotf = '';
+    $('#dl .ta a:first-child:visible').each(function(){lotf+=$(this).attr('href')+'\n'});
+    return lotf.trim();
+  }
+  const filename = `${window.mtitle} ${window.mrelease_date.split(',')[1].trim()} ${Date().normalize()}.txt`;
+  const fileContent = getLinksDL();
+  downloadFile(filename, fileContent);
 }
