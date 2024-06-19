@@ -159,9 +159,10 @@ async function load_streams() {
 }
 function playStream(elem) {
   let pid = $('meta[name="post_id"]').attr('content');
-  let lid = $(elem).parent().parent().attr('data-id');
+  let litem = $(elem).parent().parent();
   window.localStorage.setItem('player_pid', pid);
-  window.localStorage.setItem('player_lid', lid);
+  window.localStorage.setItem('player_season', litem.find('.ts').text());
+  window.localStorage.setItem('player_episode', litem.find('.te').text());
   window.localStorage.setItem('player_bg', window.mbackground_url);
   window.localStorage.setItem('player_title', window.mtitle);
   window.location.href = '/p/player.html';
