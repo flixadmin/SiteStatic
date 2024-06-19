@@ -158,9 +158,9 @@ async function load_streams() {
   });
 }
 function playStream(elem) {
-  let pid = $('meta[name="post_id"]').attr('content');
   let litem = $(elem).parent().parent();
-  window.localStorage.setItem('player_pid', pid);
+  window.localStorage.setItem('player_pid', window.post_id);
+  window.localStorage.setItem('player_tmdbid', window.mid);
   window.localStorage.setItem('player_season', litem.find('.ts').text());
   window.localStorage.setItem('player_episode', litem.find('.te').text());
   window.localStorage.setItem('player_bg', window.mbackground_url);
