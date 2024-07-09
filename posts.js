@@ -40,6 +40,7 @@ sc += `</div>
     <span>Download Visible Links TXT</span>
   </button>
 </div>
+<p class="faq9450" style="display: none"><b>What to do with this TXT?:</b>  Nowadays, most of the modern Download Managers (like: 1DM and FDM) supports link importing feature. You just have to select this TXT file in your Download Manager and then it will import all the links to download.</p>
 `;
 $('.sc').html(sc);
 $('.sc .media .to-load').replaceTag('img');$('.sc .media .to-load').on('load', function(){$(this).removeClass('to-load animate-pulse dark:bg-slate-600 bg-slate-400').addClass('loaded')});
@@ -172,7 +173,7 @@ function onlinkUnlock () {
     <i class="bi bi-check text-5xl"></i> <p>Tips: Using <a class="LINKCLS" target="_blank" href="https://www.freedownloadmanager.org/download.htm">FDM</a> on PC or <a class="LINKCLS" target="_blank" href="https://play.google.com/store/apps/details?id=idm.internet.download.manager&hl=en&gl=US&pli=1">1DM</a> on Android may result in better download speed!
   </p></div>`.replaceAll('LINKCLS', 'font-medium text-emerald-800 dark:text-emerald-100 hover:underline hover:text-emerald-900 dark:hover:text-emerald-50 ease-out duration-300');
   $('#alert').html(c);
-  $('#dlvlt').show();
+  $('#dlvlt, .faq9450').show();
 }
 function on_dlvlt_click () {
   function downloadFile(filename, content) {
