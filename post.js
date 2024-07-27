@@ -24,7 +24,7 @@ let sc = `
 window.media = new FsLightbox();window.media.props.sources = [];
 window.mimages.sort(() => Math.random() - 0.5).slice(0, 12).forEach(function (e, i) {
   window.media.props.sources.push(CDN(e));
-  sc+=`<div class='rounded w-full cursor-zoom-in aspect-backdrop to-load animate-pulse dark:bg-slate-600 bg-slate-400' src='${CDN(e.replace('/original/', '/w300/'))}' onclick='window.media.open(${i})'></div>`;
+  sc+=`<div class='rounded w-full cursor-zoom-in aspect-backdrop to-load animate-pulse dark:bg-slate-600 bg-slate-400' src='${CDN(e, 300, 80)}' onclick='window.media.open(${i})'></div>`;
 })
 sc += `</div>
 <div id='alert'></div>
