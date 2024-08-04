@@ -27,7 +27,7 @@ window.mimages.sort(() => Math.random() - 0.5).slice(0, 12).forEach(function (e,
   sc+=`<div class='rounded w-full cursor-zoom-in aspect-backdrop to-load animate-pulse dark:bg-slate-600 bg-slate-400' src='${CDN(e, 300, 80)}' onclick='window.media.open(${i})'></div>`;
 })
 sc += `</div>
-<div id='alert'></div>
+<div id='alert' style="min-height: 1px"></div>
 <button onclick="playStream()" role="button" class="block my-2 mx-auto px-4 py-2 bg-emerald-600/[.85] text-white leading-none rounded-md text-xl ease-out duration-300 active:scale-[.9] hover:bg-emerald-600 dark:bg-emerald-400/75 dark:hover:bg-emerald-500/75">Watch Online</button>
 <div class='flex justify-between mb-1'>
   <h5 class='text-xl font-medium'>Download</h5>
