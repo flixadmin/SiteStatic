@@ -28,6 +28,7 @@ window.mimages.sort(() => Math.random() - 0.5).slice(0, 12).forEach(function (e,
 })
 sc += `</div>
 <div id='alert'></div>
+<button onclick="playStream()" role="button" class="mb-2 bg-emerald-600/[.85] text-white w-24 h-10 leading-none rounded-md text-lg ease-out duration-300 active:scale-[.9] hover:bg-emerald-600 dark:bg-emerald-400/75 dark:hover:bg-emerald-500/75">Watch Online</button>
 <div class='flex justify-between mb-1'>
   <h5 class='text-xl font-medium'>Download</h5>
   <button class='rounded filter-btn p-1 text-sm ease-out duration-300 border bg-emerald-200/50 text-emerald-700 border-emerald-200 hover:bg-emerald-600 hover:text-white hover:border-emerald-600 dark:bg-emerald-800/50 dark:text-emerald-400 dark:border-emerald-700/75 dark:hover:bg-emerald-400/75 dark:hover:text-white dark:hover:border-emerald-400/75 leading-none' style='display: none'>Filter</button>
@@ -93,6 +94,11 @@ async function load_streams() {
     method: 'POST',
     xhrFields: {withCredentials: true},
     success: function (r, s) {
+      if (r.links.length == 0) {
+        dl.html(err_msg('Download Links are not available right now. Admin will fix it ASAP.')).removeAttr('class');
+        window.dispatchEvent(new Event('resize'));
+	return void(0);
+      }
       let isTV = r.type != 'movie';
       if (!isTV) {$('#fseason, label[for="fseason"]').hide()}
       $('.filter-btn').show();
@@ -141,8 +147,6 @@ async function load_streams() {
             <a class="${btn_cls}" href="${e.url}">Unlock Link</a>
             ` : `
             <a class="${btn_cls}" target="_blank" href="${e.url}">Download</a>
-            |
-            <a role="button" class="${btn_cls}" onclick="playStream(this)">Watch</a>
             `}
           </td>
         </tr>`);
@@ -158,15 +162,8 @@ async function load_streams() {
     }
   });
 }
-function playStream(elem) {
-  let litem = $(elem).parent().parent();
-  window.localStorage.setItem('player_pid', window.post_id);
-  window.localStorage.setItem('player_tmdbid', window.mid);
-  window.localStorage.setItem('player_season', litem.find('.ts').text());
-  window.localStorage.setItem('player_episode', litem.find('.te').text());
-  window.localStorage.setItem('player_bg', window.mbackground_url);
-  window.localStorage.setItem('player_title', window.mtitle);
-  window.location.href = '/p/player.html';
+function playStream() {
+  window.location.href = '/p/player.html?id=' + window.post_id + '&title=' + encodeURIComponent(window.mtitle);
 }
 function onlinkUnlock () {
   let c = `<div class="min-h-16 rounded-lg px-3 flex gap-1 items-center bg-emerald-200 text-emerald-700 py-2 my-3 dark:bg-emerald-800 dark:text-emerald-200">
