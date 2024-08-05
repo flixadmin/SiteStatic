@@ -28,7 +28,7 @@ window.mimages.sort(() => Math.random() - 0.5).slice(0, 12).forEach(function (e,
 })
 sc += `</div>
 <div id='alert' style="min-height: 1px"></div>
-<div class="flex"><a href="/p/player.html?id=${window.post_id}" role="button" class="block my-2 mx-auto px-4 py-2 bg-emerald-600/[.85] text-white leading-none rounded-md text-xl ease-out duration-300 active:scale-[.9] hover:bg-emerald-600 dark:bg-emerald-400/75 dark:hover:bg-emerald-500/75">Watch Online</a></div>
+<div class="flex"><a href="/p/player.html?id=${window.post_id}" role="button" class="flex gap-2 items-center justify-center my-2 mx-auto px-4 py-2 bg-emerald-600/[.85] text-white leading-none rounded-md text-2xl ease-out duration-300 active:scale-[.9] hover:bg-emerald-600 dark:bg-emerald-400/75 dark:hover:bg-emerald-500/75">Watch Online <span class="anm-dot"><i class="bi bi-play-fill"></i></span></a></div>
 <div class='flex justify-between mb-1'>
   <h5 class='text-xl font-medium'>Download</h5>
   <button class='rounded filter-btn p-1 text-sm ease-out duration-300 border bg-emerald-200/50 text-emerald-700 border-emerald-200 hover:bg-emerald-600 hover:text-white hover:border-emerald-600 dark:bg-emerald-800/50 dark:text-emerald-400 dark:border-emerald-700/75 dark:hover:bg-emerald-400/75 dark:hover:text-white dark:hover:border-emerald-400/75 leading-none' style='display: none'>Filter</button>
