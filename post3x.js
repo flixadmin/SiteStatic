@@ -146,7 +146,7 @@ async function load_streams() {
             ${r.locked ? `
             <a class="${btn_cls}" href="${e.url}">Unlock Link</a>
             ` : `
-            <a class="${btn_cls}" target="_blank" href="${e.url}">Download</a>
+            <a class="${btn_cls}" href="${e.url}">Download</a>
             `}
           </td>
         </tr>`);
