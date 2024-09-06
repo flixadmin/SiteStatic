@@ -47,7 +47,7 @@ let has_perm = document.cookie.indexOf("perm=1") != -1;
 let site_view = parseInt(window.sessionStorage.getItem('site_view'));
 site_view = site_view ? site_view + 1 : 1;
 window.sessionStorage.setItem('site_view', site_view);
-let sleepTime = 10; // sec
+let sleepTime = 3; // sec
 let required_view = 2;
 let is_suppressed = document.cookie.indexOf("push_sp=1") != -1;
 
